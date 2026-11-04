@@ -1,0 +1,25 @@
+GREENCHARGE ANALYTICS
+BUSINESS INSIGHTS REPORT
+
+Project: EV Charging Data Analytics
+
+1. PROJECT OVERVIEW
+This project analyzes EV charging session data to
+understand charging patterns, demand, and charger usage.
+
+2. DATA QUALITY
+The dataset was cleaned and validated using Python,
+Pandas, and NumPy.
+
+3. CHARGING ANALYSIS
+Charging sessions can be analyzed by hour, charger
+type, charging location, and company.
+
+4. BUSINESS OBJECTIVE
+Identify charging patterns and provide insights
+that can support charging infrastructure planning.
+
+5. CONCLUSION
+This project combines data cleaning, analysis,
+and Power BI visualization to support
+data-driven decision-making.
