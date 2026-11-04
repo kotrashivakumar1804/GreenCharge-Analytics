@@ -1,25 +1,238 @@
 GREENCHARGE ANALYTICS
 BUSINESS INSIGHTS REPORT
+============================================================
 
 Project: EV Charging Data Analytics
+Dashboard: GreenCharge | Charging Overview
+Analysis period: September 2021 – September 2022
+Dataset used: Final cleaned EV charging dataset (68,625 records)
 
 1. PROJECT OVERVIEW
-This project analyzes EV charging session data to
-understand charging patterns, demand, and charger usage.
+------------------------------------------------------------
+GreenCharge Analytics examines EV charging sessions to understand
+charging demand, usage patterns, charger-speed mix, charging
+locations, and charging-company distribution. The analysis combines
+Python-based data preparation and exploratory analysis with an
+interactive Power BI dashboard.
 
-2. DATA QUALITY
-The dataset was cleaned and validated using Python,
-Pandas, and NumPy.
+2. DATASET SNAPSHOT
+------------------------------------------------------------
+• Charging sessions analyzed: 68,625
+• Unique users represented: 2,291
+• Charging locations/categories: 14
+• Charger IDs represented: 2,098
+• Analysis period: September 2021 to September 2022
+• Total demand_value: 1,103,517.12 (dataset unit not specified)
+• Average demand_value per session: 16.08
+• Average duration_minutes: 127.04 minutes (approximately 2.12 hours)
 
-3. CHARGING ANALYSIS
-Charging sessions can be analyzed by hour, charger
-type, charging location, and company.
+Note: Demand is reported as demand_value because the dataset's unit
+has not been independently confirmed. Do not interpret it as kWh
+unless the source documentation confirms that unit.
 
-4. BUSINESS OBJECTIVE
-Identify charging patterns and provide insights
-that can support charging infrastructure planning.
+3. CHARGING SESSION AND DEMAND OVERVIEW
+------------------------------------------------------------
+The final dataset contains 68,625 charging sessions from 2,291
+unique users. The average session duration_minutes is about
+127 minutes, indicating that charging sessions commonly occupy
+charging infrastructure for a meaningful period.
 
-5. CONCLUSION
-This project combines data cleaning, analysis,
-and Power BI visualization to support
-data-driven decision-making.
+The total demand_value across sessions is 1,103,517.12, with an
+average of 16.08 per session. These figures provide baseline KPIs
+for comparing locations, charger categories, and time periods.
+
+4. PEAK CHARGING HOURS
+------------------------------------------------------------
+The busiest hours by number of sessions are:
+• 6:00 PM: 6,027 sessions; demand_value 100,426.93
+• 5:00 PM: 5,986 sessions; demand_value 94,395.49
+• 7:00 PM: 5,017 sessions; demand_value 90,150.04
+• 4:00 PM: 4,934 sessions; demand_value 72,021.12
+• 8:00 PM: 4,208 sessions; demand_value 79,695.84
+
+Insight:
+Charging activity is concentrated in the late afternoon and evening,
+with 5 PM–7 PM particularly busy. The 6 PM hour is the strongest
+observed hour by both session count and total demand_value.
+
+Business implication:
+Operators can review staffing, availability, queue management, and
+load planning around the late-afternoon/evening peak. Any operational
+change should be validated against local capacity and electricity
+constraints.
+
+5. CHARGER SPEED ANALYSIS
+------------------------------------------------------------
+• SlowCharger: 53,700 sessions (78.25%); demand_value 820,743.32
+• FastCharger: 14,925 sessions (21.75%); demand_value 282,773.80
+
+Insight:
+Slow chargers account for most recorded sessions, while fast chargers
+represent approximately one-fifth of sessions. Fast-charger sessions
+have a higher average demand_value (about 18.95) than SlowCharger
+sessions (about 15.28); this is a descriptive comparison, not proof
+that charger speed causes higher demand.
+
+Business implication:
+Review the balance of slow and fast chargers by location and time.
+Fast chargers may be useful where users need shorter turnaround,
+while slow chargers may suit longer-duration parking. Site-level
+utilization and waiting-time data should guide investment decisions.
+
+6. CHARGING COMPANY ANALYSIS
+------------------------------------------------------------
+• Company B: 42,489 sessions (61.91%); demand_value 684,733.37
+• Company A: 26,136 sessions (38.09%); demand_value 418,783.75
+
+Insight:
+Company B has the larger share of sessions and demand_value in this
+dataset. This indicates higher recorded usage, but does not alone
+establish better service quality, profitability, or reliability.
+
+Business implication:
+Compare companies further using charger availability, downtime,
+charging duration, user satisfaction, and location mix before making
+performance or procurement decisions.
+
+7. CHARGING LOCATION ANALYSIS
+------------------------------------------------------------
+Top locations by session count:
+• Public area: 13,404 sessions; demand_value 219,295.02
+• Apartment: 12,528 sessions; demand_value 214,112.55
+• Resort: 8,293 sessions; demand_value 130,999.17
+• Hotel: 8,277 sessions; demand_value 115,492.46
+• Company: 7,255 sessions; demand_value 110,743.66
+• Public institution: 6,695 sessions; demand_value 107,967.95
+
+Insight:
+Public areas and apartments are the two highest-volume categories.
+Together they represent 25,932 sessions, approximately 37.8% of all
+sessions. Resorts and hotels also show substantial activity.
+
+Business implication:
+Prioritize capacity and utilization reviews at public-area and
+apartment charging locations. For hotels and resorts, consider
+charging access aligned with guest arrival, stay, and departure
+patterns. These are planning suggestions and should be checked with
+site-level occupancy and capacity data.
+
+8. DEMAND LEVEL ANALYSIS
+------------------------------------------------------------
+• Low Demand: 23,607 sessions; average demand_value 5.03;
+  total demand_value 118,727.80
+• Medium Demand: 24,177 sessions; average demand_value 14.46;
+  total demand_value 349,623.66
+• High Demand: 20,841 sessions; average demand_value 30.48;
+  total demand_value 635,165.66
+
+Insight:
+High Demand sessions contribute the largest share of total
+demand_value (approximately 57.5%), even though they are not the
+largest group by session count. Medium Demand has the most sessions.
+
+Business implication:
+Monitor high-demand sessions for load planning and demand management.
+Use the demand-level distribution to support capacity planning, while
+checking the thresholds used to define Low, Medium, and High Demand.
+
+9. MONTHLY CHARGING TRENDS
+------------------------------------------------------------
+The dashboard shows monthly session counts rising from the early
+period, reaching approximately 7.4K sessions in July and August 2022,
+before falling to approximately 5.8K in September 2022.
+
+Insight:
+Recorded monthly activity generally increased across the displayed
+period, with a high point in July–August 2022. September 2022 may
+represent a partial month or a reporting boundary; confirm date
+coverage before interpreting the decline as a real drop.
+
+Business implication:
+Use monthly trends to monitor growth and investigate changes, but
+compare complete months and account for data completeness and
+seasonality.
+
+10. DURATION AND SESSION CHARACTERISTICS
+------------------------------------------------------------
+The average duration_minutes in the cleaned dataset is approximately
+127.04 minutes. Duration varies substantially by location category:
+• Apartment: approximately 163.62 minutes average
+• Public area: approximately 113.67 minutes average
+• Public parking lot: approximately 42.30 minutes average
+• Camping: approximately 208.05 minutes average
+
+Insight:
+Charging duration differs across location categories, likely reflecting
+different parking/stay contexts. These averages are descriptive and
+should not be treated as causal explanations.
+
+Business implication:
+Consider location-specific expectations for session duration and
+turnover. Public parking may require different utilization measures
+than apartments, hotels, or camping sites.
+
+11. DATA QUALITY AND ANALYTICS NOTES
+------------------------------------------------------------
+The report uses the final cleaned dataset supplied for analysis.
+Duplicate removal and outlier handling were completed during the
+user's preprocessing workflow; this report does not repeat those
+steps or assert counts for removed records.
+
+Before publishing or making operational decisions, retain the cleaning
+and validation documentation and confirm the meaning/units of
+demand_value, charger speed codes, company mappings, and demand-level
+thresholds from the dataset source or project methodology.
+
+12. KEY BUSINESS INSIGHTS (SUMMARY)
+------------------------------------------------------------
+1) 6 PM is the busiest charging hour (6,027 sessions).
+2) 5 PM and 6 PM together account for 12,013 sessions.
+3) Public areas lead location categories with 13,404 sessions.
+4) Apartments are the second-largest category with 12,528 sessions.
+5) Public areas and apartments together contribute about 37.8% of
+   all sessions.
+6) Slow chargers account for 78.25% of sessions.
+7) Fast chargers account for 21.75% of sessions but show a higher
+   average demand_value per session in this dataset.
+8) Company B represents 61.91% of sessions.
+9) High Demand sessions contribute about 57.5% of total demand_value.
+10) Monthly sessions peak around July–August 2022 at roughly 7.4K.
+
+13. BUSINESS RECOMMENDATIONS
+------------------------------------------------------------
+• Review charging capacity and availability during the 4 PM–8 PM
+  window, especially around 5 PM and 6 PM.
+• Prioritize utilization assessment for public-area and apartment
+  charging sites due to their high session volumes.
+• Evaluate the slow/fast charger mix using occupancy, queueing,
+  turnaround time, and demand—not session counts alone.
+• Compare Company A and Company B on reliability, uptime, user
+  experience, and site mix before drawing quality conclusions.
+• Track High Demand sessions and validate demand thresholds to
+  support load and infrastructure planning.
+• Compare full months consistently and investigate unusual monthly
+  changes before treating them as growth or decline.
+• Add future metrics such as charger uptime, wait time, revenue,
+  cost, and user satisfaction if those data become available.
+
+14. LIMITATIONS
+------------------------------------------------------------
+• demand_value units are not confirmed in the supplied dataset.
+• The report describes associations and distributions; it does not
+  establish causation.
+• Company usage share is not a direct measure of company performance.
+• Monthly comparisons depend on complete and consistent date coverage.
+• Recommendations require local operational and capacity validation.
+
+15. CONCLUSION
+------------------------------------------------------------
+GreenCharge Analytics turns cleaned EV charging session data into
+an analytical view of demand, time patterns, charger-speed usage,
+companies, and charging locations. The results highlight evening
+peaks, high session volumes at public areas and apartments, and a
+large share of sessions on SlowChargers. These findings can help
+guide further investigation and infrastructure planning when paired
+with operational context.
+
+============================================================
+End of Business Insights Report
